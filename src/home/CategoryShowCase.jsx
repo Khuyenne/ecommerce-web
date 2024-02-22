@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import Rating from '../compoments/Rating';
+import { Link } from 'react-router-dom';
 const title = "Our Products";
 
 const ProductData = [
@@ -94,10 +96,47 @@ const CategoryShowCase = () => {
             {/**section header */}
             <div className="section-header">
                 <h2 className="title">{title}</h2>
-                <div>
+                <div className='course-filter-group'>
                     <ul className="lab-ul">
-                        <li onClick={() => filterItem("All")}>All product</li>
+                        <li onClick={() => filterItem("All")}>All</li>
+                        <li onClick={() => filterItem("Shoes")}>Shoes</li>
+                        <li onClick={() => filterItem("Bags")}>Bags</li>
+                        <li onClick={() => filterItem("Phones")}>Phones</li>
+                        <li onClick={() => filterItem("Beauty")}>Beauty</li>
                     </ul>
+                </div>
+            </div>
+
+            {/**section body */}
+            <div className="section-wrapper">
+                <div>
+                    {
+                        items.map((product) => <div key={product.id} className='col'>
+                            <div className="course-item style-4">
+                                <div className="course-inner">
+                                    <div className="course-thubm">
+                                        <img src={product.imgUrl} alt="" />
+                                        <div className="course-category">
+                                            <div className="course-cate">
+                                                <a href="#">{product.cate}</a>
+                                            </div>
+                                            <div className="course-review">
+                                                <Rating/>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/** content */}
+                                    <div className="course-content">
+                                        <Link to={`/shop/${product.id}`}>{product.title}</Link>
+                                        <div className="course-footer">
+                                            <Link to="/" className='ca-name'>{product.brand}</Link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> )
+                    }
                 </div>
             </div>
         </div>
