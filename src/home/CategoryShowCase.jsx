@@ -81,7 +81,7 @@ const CategoryShowCase = () => {
 
     //category baded filtering
     const filterItem = () => {
-        
+
     }
   return (
     <div className='course-section style-3 padding-tb'>
@@ -96,7 +96,7 @@ const CategoryShowCase = () => {
                 <h2 className="title">{title}</h2>
                 <div>
                     <ul className="lab-ul">
-                        <li onClick={() => filterItem("All")}>All</li>
+                        <li onClick={() => filterItem("All")}>All product</li>
                     </ul>
                 </div>
             </div>
