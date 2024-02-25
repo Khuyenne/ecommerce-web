@@ -1,7 +1,7 @@
 import React from 'react';
 const subTitle = "Save The Day";
 const title = (
-    <h2>Join on Day Long Free Workshop for <b>Advence <span>Mastering</span><b> on Sales</b></b></h2>
+    <h2 className='title'>Join on Day Long Free Workshop for <b>Advence <span>Mastering</span><b> on Sales</b></b></h2>
 );
 
 const desc = "Limited Time Offer! Hurry Up";
@@ -14,11 +14,23 @@ const Register = () => {
                 <div className="col">
                     <div className="section-header">
                         <span className="subtitle">{subTitle}</span>
+                        {title}
+                        <p>{desc}</p>
                     </div>
                 </div>
 
                 <div className="col">
-
+                    <div className="section-wrapper">
+                        <h4>Register Now</h4>
+                        <from className="register-form">
+                            <input type="text" name="name" placeholder='Username' className='reg-input' />
+                            <input type="email" name="email" placeholder='Email' className='reg-input' />
+                            <input type="number" name="number" placeholder='Phone' className='reg-input' />
+                            <button type='submit' className='lab-btn'>
+                                Register Now
+                            </button>
+                        </from>
+                    </div>
                 </div>
             </div>
         </div>
