@@ -9,7 +9,10 @@ function App() {
   return (
     <>
       <NavItems/>
+      {/* relative to the viewport: min-height 100vh */}
+      <div className="min-vh-100"> 
       <Outlet/>
+      </div>
       <Footer/>
     </>
   )
