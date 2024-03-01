@@ -1,10 +1,29 @@
 import React, { useState } from 'react'
 import PageHeader from '../compoments/PageHeader'
 
-const showResults ="Showing 01 - 12 of 139 Results"
 
+const showResults ="Showing 01 - 12 of 139 Results";
+import Data from "../products.json";
+import ProductCard from './ProductCard';
+import Pagination from './Pagination';
+import Search from './Search';
 const Shop = () => {
   const [GridList, setGridList] = useState(true);
+  const [products, setproducts] = useState(Data);
+  console.log(products);
+
+  //Pagination
+  const [currentPage, setcurrentPage] = useState(1);
+  const productsPerPage =12;
+
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstPage = indexOfLastProduct - productsPerPage;
+  const currentProducts = products.slice(indexOfFirstPage, indexOfLastProduct);
+
+  //function to change the current page
+  const paginate =(pageNumber) => {
+    setcurrentPage(pageNumber)
+  }
 
   return (
     <div>
@@ -16,6 +35,7 @@ const Shop = () => {
             <div className="row justify-content-center">
               <div className="col-lg-8 col-12">
                 <article>
+                  {/** layout and title  */}
                   <div className="shop-title d-flex flex-warp justify-content-between">
                     <p>{showResults}</p>
                     <div className={`product-view-mode ${GridList ? "gridActive" : 'listActive'}`}>
@@ -28,9 +48,25 @@ const Shop = () => {
 
                     </div>
                   </div>
+
+                  {/** product cards  */}
+                  <div>
+                    <ProductCard GridList={GridList} products={currentProducts}/>
+                  </div>
+
+                  <Pagination
+                    productsPerPage={productsPerPage}
+                    totalProducts = {products.length}
+                    paginate = {paginate}
+                    activePage ={currentPage}
+                  />
                 </article>
               </div>
-              <div className="col-lg-4 col-12">right side</div>
+              <div className="col-lg-4 col-12">
+                <aside>
+                  <Search products={products} GridList={GridList}/>
+                </aside>
+              </div>
             </div>
           </div>
         </div>
