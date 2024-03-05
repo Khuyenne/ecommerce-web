@@ -8,10 +8,12 @@ import ProductCard from './ProductCard';
 import Pagination from './Pagination';
 import Search from './Search';
 import ShopCategory from './ShopCategory';
+import PopularPost from './PopularPost';
+import Tags from './Tags';
 const Shop = () => {
   const [GridList, setGridList] = useState(true);
   const [products, setproducts] = useState(Data);
-  console.log(products);
+  // console.log(products);
 
   //Pagination
   const [currentPage, setcurrentPage] = useState(1);
@@ -85,6 +87,8 @@ const Shop = () => {
                   menuItems = {menuItems}
                   setProducts= {setproducts}
                   selectedCategory={selectedCategory} />
+                  <PopularPost/>
+                  <Tags/>
                 </aside>
               </div>
             </div>
